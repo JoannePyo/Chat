@@ -8,7 +8,10 @@
 }
 
 body{
-  background-image: url("/bg.jpg");
+  background-image: url("/bg.png");
+  background-size: cover; /* 화면에 꽉 차게 설정 */
+  background-position: center; /* 이미지가 중심에 위치하도록 설정 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
   display:flex;
   align-items: center;
   justify-content: center;
@@ -19,9 +22,17 @@ body{
 .container{
   width:90vw;
   height: 90vh;
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: rgba(17, 25, 40, 0.26);
   backdrop-filter: blur(19px) saturate(180%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
+}
+
+
+.loading{
+  padding: 50px;
+  font-size: 36px;
+  border-radius: 10px;
+  background-color: rgba(17, 25, 40, 0.9);
 }
