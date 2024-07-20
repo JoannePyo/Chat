@@ -16,8 +16,8 @@ import { useUserStore } from "../../../../lib/userStore";
 
 const AddUser = () => {
   const [user, setUser] = useState(null);
-
   const { currentUser } = useUserStore();
+  const [usernameInput, setUsernameInput] = useState(""); // 검색 입력값 상태 추가
 
   const handleSearch = async (e) => { // 사용자 검색을 처리
     e.preventDefault(); // 기본 폼 제출 동작을 막습니다.
@@ -72,15 +72,26 @@ const AddUser = () => {
           updatedAt: Date.now(),
         }),
       });
+       // 사용자 추가 후 사용자 정보를 초기화
+      setUser(null);
+      setUsernameInput(""); // 입력값 초기화
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handleCancel = () => {
+    setUser(null); // 검색한 사용자 정보를 초기화
+    setUsernameInput(""); // 입력값 초기화
+  };
+
   return (
     <div className="addUser">
       <form onSubmit={handleSearch}>
-        <input type="text" placeholder="Username" name="username" />
+        <input type="text" placeholder="Username" name="username" 
+        value={usernameInput} // 상태값으로 검색 입력값 관리
+        onChange={(e) => setUsernameInput(e.target.value)} // 입력값 변경 시 상태 업데이트
+        />
         <button>Search</button>
       </form>
       {user && (
@@ -90,6 +101,9 @@ const AddUser = () => {
             <span>{user.username}</span>
           </div>
           <button onClick={handleAdd}>Add User</button>
+          <button onClick={handleCancel} className="cancel-button">
+            Cancel
+          </button>
         </div>
       )}
     </div>

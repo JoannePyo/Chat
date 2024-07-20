@@ -117,7 +117,7 @@ const ChatList = () => {
           </div>
         </div>
       ))}
-      {addMode && <AddUser />}{" "}
+      {addMode && <AddUser />}
       {/*addMode를 넣어주면 + 이모티콘 누르면 AddUser 나온다. */}
     </div>
   );

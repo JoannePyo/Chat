@@ -1,7 +1,8 @@
 .userinfo {
     padding: 15px;
     display: flex;
-    align-items: center;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    align-items: flex-start; /* 왼쪽 정렬 */
     justify-content: space between;
 
     .user{
@@ -25,6 +26,97 @@
             height: 20px;
             cursor: pointer;
         }
+    }
+    .status {
+        margin-top: 20px; /* 상태 메시지와 사용자 정보 사이의 간격 조정 */
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column; /* 상태 메시지 요소를 세로로 배치 */
+        gap: 10px; /* 상태 메시지의 내부 요소 간격 조정 */
+        color: #555; /* 상태 메시지 글자색 */
+    }
+    .status-display {
+        display: flex;
+        align-items: center; /* 상태 메시지와 버튼을 수평으로 정렬 */
+        gap: 10px; /* 상태 메시지와 버튼 간의 간격 조정 */
+    }
+    .status-display button {
+        padding: 5px 10px; /* 버튼 패딩 */
+        border: none; /* 기본 테두리 제거 */
+        border-radius: 5px; /* 버튼 모서리 둥글게 */
+        background-color: #ffb700d6; /* 버튼 배경색 */
+        color: white; /* 버튼 글자색 */
+        cursor: pointer; /* 커서 포인터 */
+        transition: background-color 0.2s; /* 애니메이션 효과 */
+    }
+    
+    .status-display button:hover {
+        background-color: #eba903d6; /* 호버 시 버튼 색상 변경 */
+    }
+    .status-edit {
+        background-color: #4f4d4d25; /* 상태 수정 시 배경색을 회색으로 변경 */
+        padding: 10px; /* 패딩 추가 */
+        border-radius: 5px; /* 모서리 둥글게 */
+        display: flex;
+        flex-direction: column; /* 세로 방향 */
+        gap: 5px; /* 내부 요소 간격 조정 */
+    }
+    
+    .status-edit input {
+        padding: 5px; /* 입력 필드 패딩 */
+        border: 1px solid #525151bf; /* 테두리 */
+        border-radius: 5px; /* 모서리 둥글게 */
+        font-size: 14px; /* 글자 크기 */
+    }
+    
+    .status-buttons {
+        display: flex;
+        gap: 10px; /* 버튼 간격 조정 */
+    }
+    
+    .update-button {
+        background-color: #007bff; /* 업데이트 버튼 배경색 */
+        color: white; /* 글자색 */
+        padding: 8px 12px; /* 버튼 패딩 */
+        border: none; /* 기본 테두리 제거 */
+        border-radius: 5px; /* 버튼 모서리 둥글게 */
+        cursor: pointer; /* 커서 포인터 */
+        transition: background-color 0.2s; /* 애니메이션 효과 */
+        font-size: 12px; /* 글자 크기 조정 */
+    }
+    
+    .update-button:hover {
+        background-color: #0056b3; /* 호버 시 색상 변경 */
+    }
+    
+    .delete-button {
+        background-color: #dc3545; /* 삭제 버튼 배경색 */
+        color: white; /* 글자색 */
+        padding: 8px 12px; /* 버튼 패딩 */
+        border: none; /* 기본 테두리 제거 */
+        border-radius: 5px; /* 버튼 모서리 둥글게 */
+        cursor: pointer; /* 커서 포인터 */
+        transition: background-color 0.2s; /* 애니메이션 효과 */
+        font-size: 12px; /* 글자 크기 조정 */
+    }
+    
+    .delete-button:hover {
+        background-color: #c82333; /* 호버 시 색상 변경 */
+    }
+    
+    .cancel-button {
+        background-color: #6c757d; /* 취소 버튼 배경색 */
+        color: white; /* 글자색 */
+        padding: 8px 12px; /* 버튼 패딩 */
+        border: none; /* 기본 테두리 제거 */
+        border-radius: 5px; /* 버튼 모서리 둥글게 */
+        cursor: pointer; /* 커서 포인터 */
+        transition: background-color 0.2s; /* 애니메이션 효과 */
+        font-size: 12px; /* 글자 크기 조정 */
+    }
+    
+    .cancel-button:hover {
+        background-color: #5a6268; /* 호버 시 색상 변경 */
     }
 }
 

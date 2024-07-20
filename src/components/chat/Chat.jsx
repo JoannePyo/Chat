@@ -121,11 +121,11 @@ const Chat = () => {
         <div className="user">
           {/* user 클래스의 div는 사용자 아바타 이미지와 텍스트를 포함합니다. */}
           <img src={user?.avatar || "./avatar.png"} alt="" />{" "}
-          {/* 사용자 아바타 이미지 */}
+          {/* 상대사용자 아바타 이미지 */}
           <div className="texts">
-            {/* 사용자 이름과 상태 메시지를 포함하는 div */}
-            <spna>{user?.username}</spna> {/* 사용자 이름 */}
-            <p>Welcome</p> {/* 상태 메시지 */}
+            {/* 상대사용자 이름과 상태 메시지를 포함하는 div */}
+            <spna>{user?.username}</spna> {/* 상대사용자 이름 */}
+            <p></p> {/* 상대사용자 메시지 */}
           </div>
         </div>
         <div className="icons">
