@@ -22,6 +22,7 @@ const Chat = () => {
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
   const { currentUser } = useUserStore();
+  const [userStatusMessage, setUserStatusMessage] = useState(""); // 상대방 상태 메시지를 저장할 상태 변수 추가
 
   const [img, setImg] = useState({
     file: null,
@@ -44,6 +45,20 @@ const Chat = () => {
     };
   }, [chatId]);
 
+  // 상대방의 상태 메시지를 가져오는 useEffect
+  useEffect(() => {
+    const fetchUserStatus = async () => {
+      if (user) {
+        const userRef = doc(db, "users", user.id); // 상대방 사용자 문서 참조
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setUserStatusMessage(userSnap.data().statusMessage || ""); // 상태 메시지 설정
+        }
+      }
+    };
+
+    fetchUserStatus();
+  }, [user]);
 
   const handleEmoji = (e) => {
     // handleEmoji 함수는 이모지를 클릭했을 때 호출됩니다.
@@ -61,7 +76,7 @@ const Chat = () => {
   };
 
   const handleSend = async () => {
-    if (text === "") return;
+    if (!img.file && text.trim() === "") return; // 텍스트와 이미지가 모두 비어있으면 전송하지 않음
 
     let imgUrl = null;
 
@@ -73,7 +88,7 @@ const Chat = () => {
       await updateDoc(doc(db, "chats", chatId), {
         messages: arrayUnion({
           senderId: currentUser.id,
-          text,
+          text, // 이미지 메시지일 경우 "사진"이라고 표시
           createdAt: new Date(),
           ...(imgUrl && { img: imgUrl }),
         }),
@@ -113,6 +128,12 @@ const Chat = () => {
       setText("");
     }
   };
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // 기본 Enter 동작 방지
+      handleSend(); // 메시지 전송 함수 호출
+    }
+  };
 
   return (
     <div className="chat">
@@ -125,14 +146,8 @@ const Chat = () => {
           <div className="texts">
             {/* 상대사용자 이름과 상태 메시지를 포함하는 div */}
             <spna>{user?.username}</spna> {/* 상대사용자 이름 */}
-            <p></p> {/* 상대사용자 메시지 */}
+            <p>{userStatusMessage || "No status message."}</p> {/* 상대사용자 메시지 */}
           </div>
-        </div>
-        <div className="icons">
-          {/* icons 클래스의 div는 전화, 비디오, 정보 아이콘을 포함합니다. */}
-          <img src="./phone.png" alt="" />
-          <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" />
         </div>
       </div>
       <div className="center">
@@ -147,7 +162,7 @@ const Chat = () => {
             <div className="texts">
               {message.img && <img src={message.img} />}
               <p>{message.text}</p>
-              <span>{format(message.createdAt.toDate())}</span> {/*메세지 시간 업데이트 하기*/}
+              <span>{format(message.createdAt.toDate())}</span>{/*메세지 시간 업데이트 하기*/}
             </div>
           </div>
         ))}
@@ -163,20 +178,7 @@ const Chat = () => {
       </div>
       <div className="bottom">
         {/* bottom 클래스의 div는 입력창과 관련 아이콘들, 이모지 선택기, 전송 버튼을 포함합니다. */}
-        <div className="icons">
-          <label htmlFor="file">
-            {/* icons 클래스의 div는 이미지, 카메라, 마이크 아이콘을 포함합니다. */}
-            <img src="./img.png" alt="" /> {/* 이미지 아이콘 */}
-          </label>
-          <input
-            type="file"
-            id="file"
-            style={{ display: "none" }}
-            onChange={handleImg}
-          />
-          <img src="./camera.png" alt="" /> {/* 카메라 아이콘 */}
-          <img src="./mic.png" alt="" /> {/* 마이크 아이콘 */}
-        </div>
+        
         <input
           type="text"
           placeholder={
@@ -186,6 +188,7 @@ const Chat = () => {
           }
           value={text} // 입력창의 값은 text 상태로 설정됩니다.
           onChange={(e) => setText(e.target.value)} // 입력값이 변경되면 text 상태를 업데이트합니다.
+          onKeyDown={handleKeyDown} // 키보드 이벤트 추가
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         />
         <div className="emoji">
@@ -201,6 +204,18 @@ const Chat = () => {
             <EmojiPicker open={open} onEmojiClick={handleEmoji} />
             {/* EmojiPicker 컴포넌트는 open 상태에 따라 열리거나 닫히며, 이모지를 클릭하면 handleEmoji 함수가 호출됩니다. */}
           </div>
+        </div>
+        <div className="icons">
+          <label htmlFor="file">
+            {/* icons 클래스의 div는 이미지, 카메라, 마이크 아이콘을 포함합니다. */}
+            <img src="./img.png" alt="" /> {/* 이미지 아이콘 */}
+          </label>
+          <input
+            type="file"
+            id="file"
+            style={{ display: "none" }}
+            onChange={handleImg}
+          />
         </div>
         <button
           className="sendButton"

@@ -9,22 +9,12 @@
         display: flex;
         align-items: center;
         gap: 10px;
-    
+        width: 100%;
         img{
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-        }
-    }
-    .icons{
-        display: flex;
-        gap: 20px;
-        margin-left: auto; /* .user와 .icons 사이에 갭을 추가 */
-        img{
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
         }
     }
     .status {
@@ -38,7 +28,8 @@
     .status-display {
         display: flex;
         align-items: center; /* 상태 메시지와 버튼을 수평으로 정렬 */
-        gap: 10px; /* 상태 메시지와 버튼 간의 간격 조정 */
+        gap: 15px; /* 상태 메시지와 버튼 간의 간격 조정 */
+        width: 100%; /* 전체 너비를 사용 */
     }
     .status-display button {
         padding: 5px 10px; /* 버튼 패딩 */
