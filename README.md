@@ -1,6 +1,6 @@
-# chatWith
+# chatWithU
 
-Welcome to **chatWith**, a modern chat application designed for seamless communication. This README provides an overview of the application and how to get started.
+Welcome to **chatWithU**, a modern chat application designed for seamless communication. This README provides an overview of the application and how to get started.
 
 ## Create an account and Login
 
@@ -26,7 +26,6 @@ Once you log in, you will see your profile picture and username displayed promin
 
 ![1721764067247](image/README/1721764067247.png)
 
-
 ## After Adding Users
 
 ![1721764081313](https://file+.vscode-resource.vscode-cdn.net/Users/joanne/Documents/GitHub/Chat/image/README/1721764081313.png)Once you add another user, their chat window will open automatically. In this chat window, you will see the other user's profile picture and their current status message displayed prominently.
@@ -50,7 +49,6 @@ You can manage shared content easily:
 - **Download**: Download any shared files or photos to your device.
 - **Delete**: Remove any shared items if they are no longer needed, keeping your chat organized.
 
-
 ## Logging Out and Switching Users
 
 ![1721764591824](image/README/1721764591824.png)
@@ -68,7 +66,6 @@ If you log out and then log in as another user, such as Patrick Star, a new cha
 
 When you click on a chat, you will find all the previous conversations, memos, photos, and files associated with that user. This allows you to easily revisit important discussions and shared content.
 
-
 **Chat Content**: All your past messages, notes, images, and files will be displayed in the chat history, providing a comprehensive view of your interactions.
 
 ![1721765071452](image/README/1721765071452.png)
@@ -83,7 +80,6 @@ If you choose to block a user, their status will change to "Block User". This ac
 
 * **Blocking a User**: When you click on "Block User," the blocked user will be unable to send you messages. In the chat window, you will see a notification stating, "You cannot send a message," indicating that communication is no longer possible.
 
-
 ![1721765388586](image/README/1721765388586.png)
 
 ![1721765395361](image/README/1721765395361.png)
@@ -92,8 +88,8 @@ If you choose to block a user, their status will change to "Block User". This ac
 
 ## Conclusion
 
-Thank you for exploring **chatWith**! We designed this application to provide you with a seamless and enjoyable chatting experience. From user-friendly features to efficient communication tools, our goal is to enhance your conversations and help you connect with friends and colleagues effortlessly.
+Thank you for exploring **chatWithU**! We designed this application to provide you with a seamless and enjoyable chatting experience. From user-friendly features to efficient communication tools, our goal is to enhance your conversations and help you connect with friends and colleagues effortlessly.
 
-Whether you're sharing moments, exchanging files, or simply catching up, **chatWith** is here to support your communication needs. We hope you enjoy using the website and look forward to your feedback and suggestions for future improvements.
+Whether you're sharing moments, exchanging files, or simply catching up, **chatWithU** is here to support your communication needs. We hope you enjoy using the website and look forward to your feedback and suggestions for future improvements.
 
 Happy chatting!
